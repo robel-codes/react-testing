@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, act } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import { Counter } from "./counter";
 
@@ -27,7 +27,7 @@ describe("Counter", () => {
     const incrementButton = screen.getByRole("button", {
       name: "Increment"
     });
-    await user.click(incrementButton);
+    await act(() => user.click(incrementButton));
     const countElement = screen.getByRole("heading");
     expect(countElement).toHaveTextContent("1");
   });
@@ -38,8 +38,8 @@ describe("Counter", () => {
     const incrementButton = screen.getByRole("button", {
       name: "Increment"
     });
-    await user.click(incrementButton);
-    await user.click(incrementButton);
+    await act(() => user.click(incrementButton));
+    await act(() => user.click(incrementButton));
     // or maybe
     // await user.dblClick(incrementButton);
     const countElement = screen.getByRole("heading");
@@ -50,10 +50,10 @@ describe("Counter", () => {
     user.setup();
     render(<Counter />);
     const amountInput = screen.getByRole("spinbutton");
-    await user.type(amountInput, "10");
+    await act(() => user.type(amountInput, "10"));
     expect(amountInput).toHaveValue(10);
     const setButton = screen.getByRole("button", { name: "Set" });
-    await user.click(setButton);
+    await act(() => user.click(setButton));
     const countElement = screen.getByRole("heading");
     expect(countElement).toHaveTextContent("10");
   });
@@ -64,11 +64,11 @@ describe("Counter", () => {
     const amountInput = screen.getByRole("spinbutton");
     const setButton = screen.getByRole("button", { name: "Set" });
     const incrementButton = screen.getByRole("button", { name: "Increment" });
-    await user.tab();
+    await act(() => user.tab());
     expect(incrementButton).toHaveFocus();
-    await user.tab();
+    await act(() => user.tab());
     expect(amountInput).toHaveFocus();
-    await user.tab();
+    await act(() => user.tab());
     expect(setButton).toHaveFocus();
   });
 });
