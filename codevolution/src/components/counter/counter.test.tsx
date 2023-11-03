@@ -46,7 +46,7 @@ describe("Counter", () => {
     expect(countElement).toHaveTextContent("2");
   });
 
-  test("rendres a count of 10 after clicking the set button", async () => {
+  test("renders a count of 10 after clicking the set button", async () => {
     user.setup();
     render(<Counter />);
     const amountInput = screen.getByRole("spinbutton");
@@ -72,3 +72,57 @@ describe("Counter", () => {
     expect(setButton).toHaveFocus();
   });
 });
+
+//Utility APIs –
+//Clear()
+// test("clear", async () => {
+//   render(<textarea defaultValue="Hello, World!" />);
+//   await user.clear(screen.getByRole("textbox"));
+//   expect(screen.getByRole("textbox")).toHaveValue("");
+// });
+
+// //selectOptions()
+// test("selectOptions", async () => {
+//   render(
+//     <select multiple>
+//       <option value="1">A</option>
+//       <option value="2">B</option>
+//       <option value="3">C</option>
+//     </select>
+//   );
+//   await user.selectOptions(screen.getByRole("listbox"), ["1", "C"]);
+//   expect(screen.getByRole("option", { name: "A" }).selected).toBe(true);
+//   expect(screen.getByRole("option", { name: "B" }).selected).toBe(false);
+//   expect(screen.getByRole("option", { name: "C" }).selected).toBe(true);
+// });
+
+// //deselectOptions()
+// test("deselectOptions", async () => {
+//   render(
+//     <select multiple>
+//       <option value="1">A</option>
+//       <option value="2" selected>
+//         B
+//       </option>
+//       <option value="3">C</option>
+//     </select>
+//   );
+//   await user.deselectOptions(screen.getByRole("listbox"), "2");
+//   expect(screen.getByText("B").selected).toBe(false);
+// });
+
+// //upload()
+// test("upload file", async () => {
+//   render(
+//     <div>
+//       <label htmlFor="file-uploader">Upload file:</label>
+//       <input id="file-uploaer" type="file" />
+//     </div>
+//   );
+//   const file = new File(["hello"], "hello.png", { type: "image/png" });
+//   const input = screen.getByLabelText(/upload file/i);
+//   await user.upload(input, file);
+//   expect(input.files[0]).toBe(file);
+//   expect(input.files.item(0)).toBe(file);
+//   expect(input.files).toHaveLength(1);
+// });
