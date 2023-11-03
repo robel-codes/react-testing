@@ -1,6 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { Application } from "./components/application/application";
+import { Skills } from "./components/skills/skills";
+import { Counter } from "./components/counter/counter";
 
 function App() {
   return (
@@ -19,6 +22,9 @@ function App() {
           Learn React
         </a>
       </header>
+      <Application />
+      <Skills skills={["HTML", "CSS"]} />
+      <Counter />
     </div>
   );
 }
